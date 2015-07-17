@@ -7,10 +7,11 @@ angular.module('conversationApp')
   	$scope.responses = []; 
   	$scope.topicArray = [];
   	$scope.texts = [];
+  	$scope.number = 4; 
 
+  	//parsing data and attaching it to the scope
     $http.get('/files/discussion.json').
       success(function(data) {
-	        $scope.data.topics = data.topics;
 	        for( var i in data){
 	        	$scope.topicArray = data[i];
 	        	for (var j in $scope.topicArray){
@@ -20,7 +21,6 @@ angular.module('conversationApp')
 	        		 }
 	        	}
 	        } 
-	        console.log($scope.responses);
       });
 
   });

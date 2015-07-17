@@ -9,6 +9,16 @@ body {
   padding: 0;
 }
 
+a{
+  text-decoration: none;
+}
+a:hover{
+  text-decoration: none;
+};
+a:active{
+  text-decoration: none;
+};
+
 /* Everything but the jumbotron gets side spacing for mobile first views */
 .header,
 .marketing,
@@ -69,9 +79,8 @@ pre{
 }
 
 .containerTopic{
-  outline: 1px solid MEDIUMAQUAMARINE;
+/*  outline: 1px solid MEDIUMAQUAMARINE;*/
   margin-top: 20px;
-
 }
 
 .jumbotron .btn {
