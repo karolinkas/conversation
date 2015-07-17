@@ -1,28 +1,26 @@
 'use strict';
 
-/**
- * @ngdoc function
- * @name conversationApp.controller:MainCtrl
- * @description
- * # MainCtrl
- * Controller of the conversationApp
- */
 angular.module('conversationApp')
-  .controller('MainCtrl', function ($http) {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+  .controller('MainCtrl', function ($http,$scope) {
 
+  	$scope.data = {};
+  	$scope.responses = []; 
+  	$scope.topicArray = [];
+  	$scope.texts = [];
 
     $http.get('/files/discussion.json').
-      success(function(data, status, headers, config) {
-	        console.log(data);
-      }).
-      error(function(data, status, headers, config) {
-        // called asynchronously if an error occurs
-        // or server returns response with an error status.
+      success(function(data) {
+	        $scope.data.topics = data.topics;
+	        for( var i in data){
+	        	$scope.topicArray = data[i];
+	        	for (var j in $scope.topicArray){
+	        		$scope.responses = $scope.topicArray[j].responses;
+	        		 for(var text in $scope.responses){
+	        		 		$scope.texts.push($scope.responses[text].posttext.replace(/<[^>]+>/gm, ''));
+	        		 }
+	        	}
+	        } 
+	        console.log($scope.responses);
       });
 
   });
