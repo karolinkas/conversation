@@ -7,16 +7,18 @@ angular.module('conversationApp').directive('postDirective', ['$timeout','$compi
 		scope: true,
 		link: function(scope,element){
 
+  
            var posts = angular.element(
-           '<div ng-repeat="topic in topicArray" class="container" > '+
-                '<h4>{{topic.topictitle}}</h4>'+
+           '<div ng-repeat="topic in topicArray" class="containerTopic" > '+
+                '<h4>Discussiontopic: {{topic.topictitle}}</h4>'+
                 '<div ng-repeat="response in responses">'+
                   '<div ng-repeat="text in texts track by $index">'+
                     '<div class="jumbotron">'+
-                    '<h4>{{response.author}}</h4>'+
+                    '<h4>Username: {{response.author}}</h4>'+
                     '<p>{{response.age | date:"mediumTime"}}</p>'+
                     '{{text}}'+
-                  '</div>'+
+                    '</div>'+
+                    '<div class="tomato"></div>'+
                 '</div>'+
               '</div>'+
             '</div>');
