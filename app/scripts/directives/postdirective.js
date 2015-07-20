@@ -10,22 +10,23 @@ angular.module('conversationApp').directive('postDirective', ['$timeout','$compi
 
            //creating template string 
            var posts = angular.element(
-           '<a href="#" class="containerTopic"  ng-model="collapsed" ng-click="collapsed=!collapsed" ng-repeat="topic in topicArray">'+
-                '<h4>Discussiontopic: {{topic.topictitle}}</h4>'+
-                '<div ng-show="collapsed" ng-repeat="response in responses">'+
-                  '<div ng-repeat="text in texts track by $index">'+
-                    '<div class="jumbotron">'+
-                    '<h4>Username: {{response.author}}</h4>'+
-                    '<p>{{response.age | date:"mediumTime"}}</p>'+
-                    '{{text}}'+
-                    '</div>'+
-                    '<div class="tomato"></div>'+
-                '</div>'+
+             '<a href="#" class="containerTopic"  ng-model="collapsed" ng-click="collapsed=!collapsed" ng-repeat="topic in data.topic">'+
+               '<h4>Discussiontopic: {{topic.topictitle}}</h4>'+
+               '<div ng-show="collapsed" ng-repeat="response in topic.responses">'+
+                   '<div class="jumbotron">'+
+                     '<h4>Username: {{response.author}}</h4>'+
+                     '<p>{{response.age | date:"mediumTime"}}</p>'+
+                     '<p ng-bind-html="response.posttext"></p>'+
+                     '<button>REPLY</button>'+
+                   '</div>'+
+                   '<div class="tomato"></div>'+
               '</div>'+
-            '</a>');
+             '</a>');
 
            //appending it to the DOM
            element.append(posts);
+
+           //attaching compiled templatestring to scope
            $compile(posts)(scope);
 
                         
