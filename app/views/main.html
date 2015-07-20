@@ -1,12 +1,12 @@
-<!-- <form ng-if="wantWrite">  
+<form ng-hide="wantWrite">  
   <input ng-model="text" type="text" placeholder="I think...">
   </input>
   <input ng-model="username" type="text" placeholder="username">
   </input>
+	<p> PREVIEW ENTRY<p>
+	<pre ng-model="response.author">{{username}}</pre>
+	<pre ng-model="response.posttext">{{text}}</pre>
 </form>
-<p> PREVIEW ENTRY<p>
-<pre ng-model="response.author">{{username}}</pre>
-<pre ng-model="response.posttext">{{text}}</pre> -->
 <post-directive></post-directive>
 
 

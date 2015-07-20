@@ -20,21 +20,23 @@ angular.module('conversationApp')
             }
           }
 
-        $scope.data = { topic: topicArray, 
+    $scope.data = { topic: topicArray, 
                         responses: responsesArray
                       };
 
-      });
+    });
 
-      $scope.write = function(){
-        wantWrite = true;
-        console.log(wantWrite);
-        return wantWrite;
-      };
+    //changing variable to show or hide form to write post
+    $scope.write = function(){
+      wantWrite = true;
+      console.log(wantWrite);
+      return wantWrite;
+    };
 
-      $scope.innerDiv = function($event){
-        $event.stopPropagation();
-      };
+    // stop propagation inside of collapse-element to make reply button work
+    $scope.innerDiv = function($event){
+      $event.stopPropagation();
+    };
 
 
 
