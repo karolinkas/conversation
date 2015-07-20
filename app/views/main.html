@@ -1,13 +1,14 @@
 <form ng-hide="wantWrite">  
-  <input ng-model="text" type="text" placeholder="I think...">
+  <input ng-model="response.posttext" type="text" placeholder="I think...">
   </input>
-  <input ng-model="username" type="text" placeholder="username">
+  <input ng-model="response.author" type="text" placeholder="username">
   </input>
 	<p> PREVIEW ENTRY<p>
-	<pre ng-model="response.author">{{username}}</pre>
-	<pre ng-model="response.posttext">{{text}}</pre>
+	<pre ng-model="response.author">{{response.author}}</pre>
+	<pre ng-model="response.posttext">{{response.posttext}}</pre>
+	<input type="submit" value="Submit">
 </form>
-<post-directive></post-directive>
+<post-directive data="data" write="false" innerDiv=""></post-directive>
 
 
 

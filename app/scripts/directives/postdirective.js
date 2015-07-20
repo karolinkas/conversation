@@ -5,12 +5,14 @@ angular.module('conversationApp').directive('postDirective', ['$timeout','$compi
 
     return {
         restrict: 'E',
-        scope: true,
+        scope: { data: '='
+
+                },
         link: function(scope,element){
 
            //creating template string 
            var posts = angular.element(
-             '<div class="containerTopic"  ng-model="collapsed" ng-click="collapsed=!collapsed" ng-repeat="topic in data.topic">'+
+             '<div class="containerTopic" ng-model="collapsed" ng-click="collapsed=!collapsed" ng-repeat="topic in data.topic">'+
                '<h4>Discussiontopic: {{topic.topictitle}}</h4>'+
                '<div ng-show="collapsed" ng-repeat="response in topic.responses">'+
                    '<div class="jumbotron" ng-click="innerDiv($event)">'+
