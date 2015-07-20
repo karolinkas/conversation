@@ -6,6 +6,7 @@ angular.module('conversationApp')
   	$scope.data = {};
     var topicArray = [];
     var responsesArray = [];
+    var wantWrite = false;
 
 
   	//parsing data and attaching it to the scope
@@ -24,5 +25,17 @@ angular.module('conversationApp')
                       };
 
       });
+
+      $scope.write = function(){
+        wantWrite = true;
+        console.log(wantWrite);
+        return wantWrite;
+      };
+
+      $scope.innerDiv = function($event){
+        $event.stopPropagation();
+      };
+
+
 
   });
