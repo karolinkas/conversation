@@ -4,6 +4,7 @@ angular.module('conversationApp')
   .controller('MainCtrl', function ($http,$scope) {
 
   	$scope.data = {};
+    var selectedTopic;
     var topicArray = [];
     var responsesArray = [];
 
@@ -20,12 +21,17 @@ angular.module('conversationApp')
 
       $scope.data = { topic: topicArray, 
                       responses: responsesArray
-                        };
+                    };
 
       //changing variable to show or hide form to write post
       $scope.write = function(){
         $scope.wantWrite = true;
         console.log("I want to write "+ $scope.wantWrite);
+      };
+
+
+      $scope.chooseTopic = function(topic){
+        selectedTopic = topic.topictitle;
       };
 
       // stop propagation inside of collapse-element to make reply button work
@@ -35,14 +41,15 @@ angular.module('conversationApp')
 
     });
 
-
     // on click on submit button add comment to scope.data
-    // $scope.addComment = function(newOne){
-    //   $scope.data = { topic: currentopic,
-    //                   responses: responsesArray.push(newOne)
-    //                 };
+    $scope.addComment = function(author,message){
+      console.log(author,message);
+      $scope.data = { topic: selectedTopic,
+                      responses: responsesArray.push({author: author,
+                                                      posttext: message})
+                    };
 
-    // };
+    };
 
 
 

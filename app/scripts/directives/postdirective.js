@@ -10,7 +10,7 @@ angular.module('conversationApp').directive('postDirective', ['$timeout','$compi
            //creating template string 
            var posts = angular.element(
              '<div class="containerTopic" ng-model="collapsed" ng-click="collapsed=!collapsed" ng-repeat="topic in data.topic">'+
-               '<h4>Discussiontopic: {{topic.topictitle}}</h4>'+
+               '<h4 ng-click="chooseTopic(topic)">Discussiontopic: {{topic.topictitle}}</h4>'+
                '<div ng-show="collapsed" ng-repeat="response in topic.responses">'+
                    '<div class="jumbotron" ng-click="innerDiv($event)">'+
                      '<h4>Username: {{response.author}}</h4>'+
@@ -22,6 +22,8 @@ angular.module('conversationApp').directive('postDirective', ['$timeout','$compi
                    '<div class="tomato"></div>'+
               '</div>'+
              '</div>');
+
+
 
 
            //appending it to the DOM

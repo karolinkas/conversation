@@ -6,7 +6,7 @@
 	<p> PREVIEW ENTRY<p>
 	<pre ng-model="response.author">{{response.author}}</pre>
 	<pre ng-model="response.posttext">{{response.posttext}}</pre>
-	<input ng-click="addComment()" type="submit" value="Submit">
+	<input ng-click="addComment(response.author,response.posttext)" type="submit" value="Submit">
 </form>
 <post-directive data="data"></post-directive>
 
