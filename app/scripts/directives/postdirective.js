@@ -5,9 +5,6 @@ angular.module('conversationApp').directive('postDirective', ['$timeout','$compi
 
     return {
         restrict: 'E',
-        scope: { data: '='
-
-                },
         link: function(scope,element){
 
            //creating template string 
@@ -25,6 +22,7 @@ angular.module('conversationApp').directive('postDirective', ['$timeout','$compi
                    '<div class="tomato"></div>'+
               '</div>'+
              '</div>');
+
 
            //appending it to the DOM
            element.append(posts);

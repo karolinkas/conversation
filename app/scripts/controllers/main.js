@@ -6,8 +6,6 @@ angular.module('conversationApp')
   	$scope.data = {};
     var topicArray = [];
     var responsesArray = [];
-    var wantWrite = false;
-
 
   	//parsing data and attaching it to the scope
     $http.get('/files/discussion.json').
@@ -20,23 +18,31 @@ angular.module('conversationApp')
             }
           }
 
-    $scope.data = { topic: topicArray, 
-                        responses: responsesArray
-                      };
+      $scope.data = { topic: topicArray, 
+                      responses: responsesArray
+                        };
+
+      //changing variable to show or hide form to write post
+      $scope.write = function(){
+        $scope.wantWrite = true;
+        console.log("I want to write "+ $scope.wantWrite);
+      };
+
+      // stop propagation inside of collapse-element to make reply button work
+      $scope.innerDiv = function($event){
+        $event.stopPropagation();
+      };
 
     });
 
-    //changing variable to show or hide form to write post
-    $scope.write = function(){
-      wantWrite = true;
-      console.log(wantWrite);
-      return wantWrite;
-    };
 
-    // stop propagation inside of collapse-element to make reply button work
-    $scope.innerDiv = function($event){
-      $event.stopPropagation();
-    };
+    // on click on submit button add comment to scope.data
+    // $scope.addComment = function(newOne){
+    //   $scope.data = { topic: currentopic,
+    //                   responses: responsesArray.push(newOne)
+    //                 };
+
+    // };
 
 
 
