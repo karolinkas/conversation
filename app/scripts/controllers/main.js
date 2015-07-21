@@ -7,6 +7,7 @@ angular.module('conversationApp')
     var selectedTopic;
     var topicArray = [];
     var responsesArray = [];
+    $scope.formData = {};
 
   	//parsing data and attaching it to the scope
     $http.get('/files/discussion.json').
@@ -32,6 +33,7 @@ angular.module('conversationApp')
 
       $scope.chooseTopic = function(topic){
         selectedTopic = topic.topictitle;
+        console.log(selectedTopic);
       };
 
       // stop propagation inside of collapse-element to make reply button work
@@ -44,11 +46,11 @@ angular.module('conversationApp')
     // on click on submit button add comment to scope.data
     $scope.addComment = function(author,message){
       console.log(author,message);
-      $scope.data = { topic: selectedTopic,
-                      responses: responsesArray.push({author: author,
-                                                      posttext: message})
-                    };
-
+      $scope.formData = {topic: selectedTopic,
+                         responses:  {author: author,
+                                     posttext: message}
+                        };
+      $scope.data.responses.push($scope.formData);
     };
 
 

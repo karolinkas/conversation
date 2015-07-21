@@ -1,13 +1,3 @@
-<form ng-show="wantWrite" ng-model="wantWrite" >  
-  <input ng-model="response.posttext" type="text" placeholder="I think...">
-  </input>
-  <input ng-model="response.author" type="text" placeholder="username">
-  </input>
-	<p> PREVIEW ENTRY<p>
-	<pre ng-model="response.author">{{response.author}}</pre>
-	<pre ng-model="response.posttext">{{response.posttext}}</pre>
-	<input ng-click="addComment(response.author,response.posttext)" type="submit" value="Submit">
-</form>
 <post-directive data="data"></post-directive>
 
 

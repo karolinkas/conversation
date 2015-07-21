@@ -17,6 +17,16 @@ angular.module('conversationApp').directive('postDirective', ['$timeout','$compi
                      '<p>{{response.age | date:"mediumTime"}}</p>'+
                      '<p ng-bind-html="response.posttext"></p>'+
                      '<button ng-click="write()" type="button">REPLY</button>'+
+                     '<form ng-show="wantWrite" ng-model="wantWrite">'+ 
+                       '<input ng-model="formData.posttext" type="text" placeholder="I think...">'+
+                       '</input>'+
+                       '<input ng-model="formData.author" type="text" placeholder="username">'+
+                       '</input>'+
+                      '<p>PREVIEW ENTRY<p>'+
+                      '<pre ng-model="formData.author">{{formData.author}}</pre>'+
+                      '<pre ng-model="formData.posttext">{{formData.posttext}}</pre>'+
+                      '<input ng-click="addComment(response.author,response.posttext)" type="submit" value="Submit">'+
+                     '</form>'+
                      '<div></div>'+
                    '</div>'+
                    '<div class="tomato"></div>'+
